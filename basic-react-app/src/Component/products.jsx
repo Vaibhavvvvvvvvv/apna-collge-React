@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Products = ({title , price}) => {
+const Products = ({title,price}) => {
     return (
         <>
             <div className="card text-white bg-secondary mb-3" >

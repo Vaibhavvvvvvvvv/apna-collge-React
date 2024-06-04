@@ -1,6 +1,7 @@
 import React from 'react'
 import Products from './products.jsx'
 const ProductRec = () => {
+  
   return (
     <> 
     <Products title="mobile" price={20000}/>

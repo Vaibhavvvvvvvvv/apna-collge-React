@@ -1,9 +1,11 @@
 import React from 'react'
 
-const ProCounter = ({count}) => {
+const ProCounter = ({count ,isLike}) => {
   return (
     <div>
-       <div>Counter Value: {count}</div>;
+       <div>
+        Item{count}
+       </div>
     </div>
   )
 }

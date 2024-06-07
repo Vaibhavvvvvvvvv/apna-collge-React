@@ -1,9 +1,11 @@
-import Ludo from './component/Ludo'
+// import Ludo from './component/Ludo'
+import Todo from './component/Todo'
 import './App.css'
 const App = () => {
   return (
     <div>
-      <Ludo/>
+      {/* <Ludo/> */}
+      <Todo/>
     </div>
   )
 }

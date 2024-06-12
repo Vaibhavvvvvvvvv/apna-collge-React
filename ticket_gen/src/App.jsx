@@ -1,12 +1,14 @@
-import React,{ useState } from 'react'
-import Ticket from './component/Ticke'
+import Lottery from './component/Lottery'
 import './App.css'
 
 function App() {
 
-  return (
+  let winnigCondition = (ticket)=>{
+        return ticket[0] === 0;
+  }
+    return (
     <>
-    <Ticket/>
+    <Lottery n={3} winnigCondition={winnigCondition}/>
     </>
   )
 }

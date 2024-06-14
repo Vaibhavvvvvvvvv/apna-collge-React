@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 const Form = () => {
     const [formData, setFormData] = useState({
         fullName: "",
@@ -45,6 +44,7 @@ const Form = () => {
                     name='password'
                     id='password' />
                     <br/><br/>
+                    
                 <button>submit</button>
             </form>
         </div>

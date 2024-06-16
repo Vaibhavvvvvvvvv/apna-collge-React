@@ -13,21 +13,21 @@ const Comment = () => {
     }
 
     return (
-        <div>
-            {
-                comments.map((comment, idx) => (
-                    <div key={idx}>
-                        <span>{comment.comment}</span>
-                        &nbsp;
-                        <span>(rating={comment.rating})</span>
-                        &nbsp;
-                        <span>{comment.username}</span>
+        <div className="container mt-4">
+        {
+            comments.map((comment, idx) => (
+                <div key={idx} className="card mb-3">
+                    <div className="card-body">
+                        <p className="card-text">{comment.comment}</p>
+                        <p className="card-text"><strong>Rating:</strong> {comment.rating}</p>
+                        <p className="card-text"><strong>Username:</strong> {comment.username}</p>
                     </div>
-                ))
-            }
+                </div>
+            ))
+        }
 
-            <FormPractice addNewComment={addNewComment} />
-        </div>
+        <FormPractice addNewComment={addNewComment} />
+    </div>
     );
 }
 export default Comment;

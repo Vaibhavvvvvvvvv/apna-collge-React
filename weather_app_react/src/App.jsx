@@ -1,12 +1,12 @@
 import React from 'react'
-import SearchBox from './Component/SearchBox'
+import WeatherApp from './Component/WeatherApp'
 import './App.css'
 
 function App() {
   
   return (
     <>
-      <SearchBox/>
+      <WeatherApp/>
     </>
   )
 }

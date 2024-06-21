@@ -1,75 +1,36 @@
-// import React,{useEffect, useState} from 'react'
-// import InfoBox from './InfoBox'
-// import SearchBox from './SearchBox'
-// const WeatherApp = () => {
-//   const [weatherInfo,setWeatherInfo] = useState({
-//     city:"Shajpur",
-//     feelsLike: 36.6,
-//     humidity: 52,
-//     temp: 32.87,
-//     tempMax: 32.87,
-//     tempMin: 32.87,
-//     weather: "overcast clouds"
-// })
-
-// useEffect(()=>{
-//   const fetchWeatherData = async () =>{
-//     const response = await fetch()
-//   }
-// })
-
-// function updateInfo(newInfo){
-//    setWeatherInfo(newInfo)
-// }
-
-//   return (
-//     <div style={{color:"black"}}>
-//         <h2>Weather App</h2>
-//       <SearchBox updateInfo={updateInfo}/>
-//       <InfoBox info={weatherInfo}/>
-//     </div>
-//   )
-// }
-
-// export default WeatherApp
-
 import React, { useEffect, useState } from 'react';
 import InfoBox from './InfoBox';
 import SearchBox from './SearchBox';
 
 const WeatherApp = () => {
-  const [weatherInfo, setWeatherInfo] = useState({
-    city: "Shajpur",
-    feelsLike: 36.6,
-    humidity: 52,
-    temp: 32.87,
-    tempMax: 32.87,
-    tempMin: 32.87,
-    weather: "overcast clouds"
-  });
+  const [weatherInfo, setWeatherInfo] = useState();
+
+  const api_url = "http://api.openweathermap.org/data/2.5/weather";
+  const api_key = "2999deed714bb6a8d54e4d65f57643f7";
 
   useEffect(() => {
-    const fetchWeatherData = async () => {
+    async function defaultTemp() {
       try {
-        const response = await fetch('YOUR_WEATHER_API_URL');
-        const data = await response.json();
-        const newWeatherInfo = {
-          city: data.name,
-          feelsLike: data.main.feels_like,
-          humidity: data.main.humidity,
-          temp: data.main.temp,
-          tempMax: data.main.temp_max,
-          tempMin: data.main.temp_min,
-          weather: data.weather[0].description
-        };
-        setWeatherInfo(newWeatherInfo);
-      } catch (error) {
-        console.error('Error fetching weather data:', error);
-      }
-    };
+        const response = await fetch(`${api_url}?q=Shajapur&appid=${api_key}&units=metric`);
+        const jsonRes = await response.json();
+        console.log(jsonRes);
 
-    fetchWeatherData();
-  }, []);
+        setWeatherInfo({
+          city: "Shajapur",
+          temp: jsonRes.main?.temp || 0,
+          tempMin: jsonRes.main?.temp_min || 0,
+          tempMax: jsonRes.main?.temp_max || 0,
+          humidity: jsonRes.main?.humidity || 0,
+          feelsLike: jsonRes.main?.feels_like || 0,
+          weather: jsonRes.weather?.[0]?.description || 'Unknown',
+        });
+      } catch (error) {
+        console.error("Error fetching the weather data", error);
+      }
+    }
+
+    defaultTemp();
+  }, []); // Empty dependency array ensures this runs once on mount
 
   function updateInfo(newInfo) {
     setWeatherInfo(newInfo);

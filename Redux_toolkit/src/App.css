@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.completed {
+  color: green;
+  text-decoration: line-through;
+}
